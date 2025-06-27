@@ -5,7 +5,7 @@ from lerobot.common.cameras.configs import CameraConfig
 
 @RobotConfig.register_subclass("so101_mujoco")
 @dataclass
-class SO101SimConfig(RobotConfig):
+class SO101MuJoCoConfig(RobotConfig):
     """Configuration for the SO100 simulated robot."""
     type: str = "so101_mujoco"
     mjcf_path: str = "lerobot-kinematics/examples/SO101/scene.xml"
@@ -14,7 +14,7 @@ class SO101SimConfig(RobotConfig):
     cameras: dict[str, CameraConfig] = field(default_factory=dict)
     start_calibrated: bool = True
     show_viewer: bool = True
-    enable_rerun: bool = True
+    enable_rerun: bool = False
     rerun_session_name: str = "so101_mujoco"
     # Joint mapping from dataset names to simulation names with offsets
     joint_mapping: dict[str, tuple[str, float]] = field(default_factory=lambda: {
